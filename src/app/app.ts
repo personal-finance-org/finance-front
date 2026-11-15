@@ -4,11 +4,12 @@ import { RouterOutlet } from '@angular/router';
 import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
 import { TranslateService } from '@ngx-translate/core';
 import { filter } from 'rxjs';
+import { GlobalLoader } from './shared/global-loader';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  template: '<router-outlet />',
+  imports: [RouterOutlet, GlobalLoader],
+  template: '<router-outlet /><app-global-loader />',
 })
 export class App {
   constructor() {

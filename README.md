@@ -82,7 +82,7 @@ src/app/
 | Entorno | Comando | API (`src/environments/`) |
 |---|---|---|
 | Desarrollo | `npm start` | `environment.ts` → `http://localhost:3000` |
-| Producción | `npm run build:gh` | `environment.prod.ts` → `https://finance-back.onrender.com` (ajústala a la URL real de tu API) |
+| Producción | `npm run build:gh` | `environment.prod.ts` → `https://api-finance-j7r4.onrender.com` (ajústala a la URL real de tu API) |
 
 ### GitHub Pages
 

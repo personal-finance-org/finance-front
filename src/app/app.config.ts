@@ -26,6 +26,7 @@ import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 import { routes } from './app.routes';
 import { Auth } from './core/auth';
 import { authInterceptor } from './core/auth.interceptor';
+import { loadingInterceptor } from './core/loading';
 import { I18n } from './core/i18n';
 import { TranslatedDatepickerIntl, TranslatedPaginatorIntl } from './core/material-intl';
 import { AppTitleStrategy } from './core/title';
@@ -39,7 +40,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes, withComponentInputBinding(), withViewTransitions()),
-    provideHttpClient(withInterceptors([authInterceptor])),
+    provideHttpClient(withInterceptors([loadingInterceptor, authInterceptor])),
 
     // Traducciones: public/i18n/{es,en,pt-BR}.json (useHttpBackend: no pasan por el interceptor de auth, que evita una dependencia circular)
     provideTranslateService({
