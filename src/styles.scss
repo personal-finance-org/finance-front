@@ -1,0 +1,79 @@
+@use '@angular/material' as mat;
+
+html {
+  height: 100%;
+  color-scheme: light dark;
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$green-palette,
+        tertiary: mat.$orange-palette,
+      ),
+      typography: Inter,
+      density: -1,
+    )
+  );
+  // Colores semánticos de finanzas
+  --income: light-dark(#13795b, #5fdca8);
+  --income-bg: light-dark(#e1f6ec, #12372b);
+  --expense: light-dark(#c4313f, #ff8c96);
+  --expense-bg: light-dark(#fde8ea, #43191e);
+  --warn: light-dark(#b45f06, #ffbf5e);
+  --warn-bg: light-dark(#fff1de, #3f2d10);
+  --transfer: light-dark(#3b5bdb, #8fa6ff);
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
+  -webkit-font-smoothing: antialiased;
+}
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-variation-settings: 'FILL' 0, 'wght' 400;
+}
+
+// ---- utilidades de layout
+.page { max-width: 1180px; margin: 0 auto; padding: 20px 16px 96px; display: flex; flex-direction: column; gap: 20px; }
+.page-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  h1 { margin: 0; font: var(--mat-sys-headline-medium); letter-spacing: -0.02em; }
+  p { margin: 2px 0 0; color: var(--mat-sys-on-surface-variant); }
+}
+.grid { display: grid; gap: 16px; }
+.grid.cols-4 { grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+.grid.cols-3 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.grid.cols-2 { grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); }
+@media (max-width: 480px) { .grid.cols-2, .grid.cols-3 { grid-template-columns: 1fr; } }
+
+.card { background: var(--mat-sys-surface-container-low); border-radius: 20px; padding: 18px 20px;
+  border: 1px solid var(--mat-sys-outline-variant); }
+.card h2 { margin: 0 0 12px; font: var(--mat-sys-title-medium); display: flex; align-items: center; gap: 8px; }
+.muted { color: var(--mat-sys-on-surface-variant); }
+.income { color: var(--income); }
+.expense { color: var(--expense); }
+.transfer { color: var(--transfer); }
+.num { font-variant-numeric: tabular-nums; }
+.chip { display: inline-flex; align-items: center; gap: 4px; padding: 2px 10px; border-radius: 999px; font: var(--mat-sys-label-small);
+  background: var(--mat-sys-surface-container-high); }
+.chip.ok { background: var(--income-bg); color: var(--income); }
+.chip.bad { background: var(--expense-bg); color: var(--expense); }
+.chip.warn { background: var(--warn-bg); color: var(--warn); }
+.empty { text-align: center; padding: 36px 12px; color: var(--mat-sys-on-surface-variant);
+  mat-icon { font-size: 44px; width: 44px; height: 44px; opacity: .6; } p { margin: 8px 0 0; } }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 14px; }
+// Espacio entre el título del diálogo y el primer campo (evita que se corte la etiqueta del campo)
+.mat-mdc-dialog-content { padding-top: 10px !important; }
+form { row-gap: 18px; }
+.form-grid .full { grid-column: 1 / -1; }
+@media (max-width: 520px) { .form-grid { grid-template-columns: 1fr; } }
+mat-form-field { width: 100%; }
+// Sin flechitas en campos numéricos
+input[type='number']::-webkit-outer-spin-button, input[type='number']::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+input[type='number'] { -moz-appearance: textfield; appearance: textfield; }
+.dialog-actions { padding: 8px 24px 20px !important; }
+.progress-track { height: 8px; border-radius: 99px; background: var(--mat-sys-surface-container-highest); overflow: hidden;
+  > span { display: block; height: 100%; border-radius: 99px; background: var(--mat-sys-primary); transition: width .4s; } }
