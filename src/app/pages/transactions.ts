@@ -7,7 +7,6 @@ import { MatIcon } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { MatProgressBar } from '@angular/material/progress-bar';
 import { MatOption, MatSelect } from '@angular/material/select';
 import { TranslatePipe } from '@ngx-translate/core';
 import { Api } from '../core/api';
@@ -21,7 +20,7 @@ import { TransactionDialog } from './transaction-dialog';
 
 @Component({
   selector: 'app-transactions',
-  imports: [DateField, ReactiveFormsModule, LocalDatePipe, MoneyPipe, MatIcon, MatButton, MatIconButton, MatFormField, MatLabel, MatSuffix, MatInput, MatSelect, MatOption, MatMenu, MatMenuItem, MatMenuTrigger, MatPaginator, MatProgressBar, TranslatePipe],
+  imports: [DateField, ReactiveFormsModule, LocalDatePipe, MoneyPipe, MatIcon, MatButton, MatIconButton, MatFormField, MatLabel, MatSuffix, MatInput, MatSelect, MatOption, MatMenu, MatMenuItem, MatMenuTrigger, MatPaginator, TranslatePipe],
   template: `
     <div class="page">
       <div class="page-header">
@@ -43,8 +42,6 @@ import { TransactionDialog } from './transaction-dialog';
         <app-date-field [label]="'tx.to' | translate" formControlName="to" clearable />
         <button matButton type="button" (click)="clear()"><mat-icon>filter_alt_off</mat-icon> {{ 'common.clear' | translate }}</button>
       </form>
-
-      @if (loading()) { <mat-progress-bar mode="indeterminate" /> }
 
       <div class="card list">
         @for (g of groups(); track g.key) {

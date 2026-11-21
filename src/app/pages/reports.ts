@@ -1,7 +1,6 @@
 import { Component, computed, effect, inject, signal, untracked } from '@angular/core';
 import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
-import { MatProgressBar } from '@angular/material/progress-bar';
 import { TranslatePipe } from '@ngx-translate/core';
 import { Api } from '../core/api';
 import { currentMonth, MoneyPipe, monthName, shiftMonth, shortMonth } from '../core/format';
@@ -12,7 +11,7 @@ import { Bars, Donut } from '../shared/charts';
 
 @Component({
   selector: 'app-reports',
-  imports: [MoneyPipe, MatIcon, MatIconButton, MatProgressBar, Donut, Bars, TranslatePipe],
+  imports: [MoneyPipe, MatIcon, MatIconButton, Donut, Bars, TranslatePipe],
   template: `
     <div class="page">
       <div class="page-header">
@@ -23,8 +22,6 @@ import { Bars, Donut } from '../shared/charts';
           <button matIconButton (click)="move(1)" [disabled]="month() >= current" [attr.aria-label]="'rep.nextMonth' | translate"><mat-icon>chevron_right</mat-icon></button>
         </div>
       </div>
-
-      @if (loading()) { <mat-progress-bar mode="indeterminate" /> }
 
       @if (m(); as r) {
         <div class="grid cols-4">

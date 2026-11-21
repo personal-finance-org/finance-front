@@ -1,7 +1,6 @@
 import { Component, effect, inject, signal, untracked } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
-import { MatProgressBar } from '@angular/material/progress-bar';
 import { RouterLink } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
 import { Api } from '../core/api';
@@ -14,7 +13,7 @@ import { Donut } from '../shared/charts';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [MoneyPipe, LocalDatePipe, RouterLink, MatIcon, MatButton, MatProgressBar, Donut, TranslatePipe],
+  imports: [MoneyPipe, LocalDatePipe, RouterLink, MatIcon, MatButton, Donut, TranslatePipe],
   template: `
     <div class="page">
       <div class="page-header">
@@ -23,8 +22,6 @@ import { Donut } from '../shared/charts';
           <p>{{ 'dash.subtitle' | translate: { month: monthLabel() } }}</p>
         </div>
       </div>
-
-      @if (loading() && !d()) { <mat-progress-bar mode="indeterminate" /> }
 
       @if (d(); as d) {
         <section class="hero">

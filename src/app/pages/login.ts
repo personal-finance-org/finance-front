@@ -5,7 +5,6 @@ import { MatButton } from '@angular/material/button';
 import { MatFormField, MatLabel, MatSuffix } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
-import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { Auth } from '../core/auth';
 import { I18n, LANGS, Lang } from '../core/i18n';
@@ -16,7 +15,7 @@ import { PasswordRules } from '../shared/password-rules';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, MatFormField, MatLabel, MatInput, MatButton, MatIcon, MatSuffix, MatProgressSpinner, TranslatePipe, PasswordRules, InstallButton],
+  imports: [ReactiveFormsModule, MatFormField, MatLabel, MatInput, MatButton, MatIcon, MatSuffix, TranslatePipe, PasswordRules, InstallButton],
   template: `
     <main>
       <section class="hero">
@@ -61,7 +60,7 @@ import { PasswordRules } from '../shared/password-rules';
           @if (error()) { <div class="error" role="alert">{{ error() }}</div> }
 
           <button matButton="filled" class="submit" [disabled]="loading()">
-            @if (loading()) { <mat-spinner diameter="20" /> } @else { {{ (mode() === 'login' ? 'auth.login' : 'auth.register') | translate }} }
+            {{ (mode() === 'login' ? 'auth.login' : 'auth.register') | translate }}
           </button>
         </form>
 
